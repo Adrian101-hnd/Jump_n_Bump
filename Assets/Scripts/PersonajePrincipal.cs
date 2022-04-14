@@ -9,6 +9,18 @@ public class PersonajePrincipal : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
+    private void Move()
+    {
+        // Constant movement to the right
+        float jumpFactor = 0;
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpFactor = 1;
+        }
+        _rigidbody.velocity = new Vector2(velocidadX, 
+                                            _rigidbody.velocity.y + jumpFactor * velocidadY);
+    }
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -16,6 +28,6 @@ public class PersonajePrincipal : MonoBehaviour
 
     private void Update()
     {
-        _rigidbody.velocity = new Vector2(velocidadX, _rigidbody.velocity.y);
+        Move();
     }
 }
