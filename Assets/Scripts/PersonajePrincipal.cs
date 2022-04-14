@@ -76,6 +76,12 @@ public class PersonajePrincipal : MonoBehaviour
         }
     }
 
+    private void Animate()
+    {
+        _animator.SetFloat("currentVelocity", _rigidbody.velocity.x);
+        _animator.SetBool("jumping", jumping);
+    }
+
     // Detect the jumping of player
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -95,6 +101,7 @@ public class PersonajePrincipal : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         jumping = false;
         _rigidbody.gravityScale = gravityDefaultValue;
     }
@@ -102,5 +109,6 @@ public class PersonajePrincipal : MonoBehaviour
     private void Update()
     {
         Move();
+        Animate();
     }
 }
