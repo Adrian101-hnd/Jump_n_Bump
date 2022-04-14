@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 32308166}
   - component: {fileID: 32308165}
   - component: {fileID: 32308164}
+  - component: {fileID: 32308168}
+  - component: {fileID: 32308167}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -205,8 +207,43 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &32308167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32308163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 338a2dab6cf104f4084734a958b007f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadX: 5
+  velocidadY: 0
+--- !u!50 &32308168
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32308163}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1170518968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,7 +2035,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1217954641
 GameObject:
@@ -2271,12 +2308,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54594f10bc21cb54ea8800ebf382d403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadX: 0
+  velocidadX: 5
   velocidadY: 10
   gravityDefaultValue: 3
   gravityInvertFactor: 30
-  jumping: 0
-  onGravityInversion: 0
 --- !u!50 &2008272213
 Rigidbody2D:
   serializedVersion: 4

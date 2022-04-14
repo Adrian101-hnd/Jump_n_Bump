@@ -18,8 +18,7 @@ public class PersonajePrincipal : MonoBehaviour
     [SerializeField] private float gravityDefaultValue;
     // Factor for which the gravity will be increased when an inversion occurs
     [SerializeField] private float gravityInvertFactor;
-    [SerializeField] private bool jumping;
-    [SerializeField] private bool onGravityInversion;
+    private bool jumping;
     private void SetGravityScale(float gravityScale)
     {
         _rigidbody.gravityScale = gravityScale;
@@ -61,18 +60,16 @@ public class PersonajePrincipal : MonoBehaviour
                                             _rigidbody.velocity.y + jumpFactor * velocidadY);
 
         // Inversion of gravity (positive)
-        if (Input.GetButtonDown("Fire1") && !onGravityInversion)
+        if (Input.GetButtonDown("Fire1"))
         {
-            onGravityInversion = true;
             SetGravityScale(gravityInvertFactor);
             gameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
             _spriteRenderer.flipX = false;
         }
 
         // Inversion of gravity (negative)
-        if (Input.GetButtonDown("Fire2") && !onGravityInversion)
+        if (Input.GetButtonDown("Fire2"))
         {
-            onGravityInversion = true;
             SetGravityScale(-gravityInvertFactor);
             gameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
             _spriteRenderer.flipX = true;
@@ -85,7 +82,6 @@ public class PersonajePrincipal : MonoBehaviour
         print("Collision Called");
         jumping = false;
 
-        onGravityInversion = false;
         // In floor returns gravity to its default value
         SetGravityDefault();
     }
@@ -100,7 +96,6 @@ public class PersonajePrincipal : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         jumping = false;
-        onGravityInversion = false;
         _rigidbody.gravityScale = gravityDefaultValue;
     }
 
