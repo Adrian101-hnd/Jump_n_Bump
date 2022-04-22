@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Puas : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            print("Tocando espina");
+            //Descontar vid
+            //Salud_Personaje.instance.vidas--;
+            //HUD.instance.ActualizarVidas();
+            Destroy(collision.gameObject, 0.0001f);
+            SceneManager.LoadScene("Nivel1");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            /*
+            if (Salud_Personaje.instance.vidas == 0)
+            {
+                //Destruir personaje
+                Destroy(collision.gameObject, 0.1f);
+
+            }
+            */
+        }
     }
 }
