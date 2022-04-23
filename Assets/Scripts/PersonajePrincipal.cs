@@ -65,6 +65,7 @@ public class PersonajePrincipal : MonoBehaviour
             SetGravityScale(gravityInvertFactor);
             gameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
             _spriteRenderer.flipX = false;
+           
         }
 
         // Inversion of gravity (negative)
@@ -73,6 +74,7 @@ public class PersonajePrincipal : MonoBehaviour
             SetGravityScale(-gravityInvertFactor);
             gameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
             _spriteRenderer.flipX = true;
+            
         }
     }
 
