@@ -77,7 +77,7 @@ public class Registro : MonoBehaviour
             else
             {
                 print(texto);
-                SceneManager.LoadScene("Nivel1");
+                SceneManager.LoadScene("MenuInicio");
             }
         }
         else

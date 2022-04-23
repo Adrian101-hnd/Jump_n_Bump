@@ -47,7 +47,7 @@ public class Iniciosesion : MonoBehaviour
             }
             else {
                 print(request.downloadHandler.text);
-                SceneManager.LoadScene("Nivel1"); }
+                SceneManager.LoadScene("MenuInicio"); }
             
         }
         else
