@@ -85,7 +85,7 @@ public class PersonajePrincipal : MonoBehaviour
     // Detect the jumping of player
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Collision Called");
+        //print("Collision Called");
         jumping = false;
 
         // In floor returns gravity to its default value
