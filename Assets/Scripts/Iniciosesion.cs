@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using System.Text;
 
 public class Iniciosesion : MonoBehaviour
 {
@@ -32,27 +33,42 @@ public class Iniciosesion : MonoBehaviour
         datos_inicio.alias = user;
         datos_inicio.password = contrasenia;
 
-        WWWForm forma = new WWWForm();
-        forma.AddField("datosJSON", JsonUtility.ToJson(datos_inicio));
-        UnityWebRequest request = UnityWebRequest.Post(/*CAMBIAR*/"http://localhost/jump-n-bump/iniciosesion.php", forma);
-        yield return request.SendWebRequest();
+        // Create the request object
+        UnityWebRequest request = new UnityWebRequest("http://165.232.147.208:4000/api/login",
+            UnityWebRequest.kHttpVerbPOST);
 
+        // Encode the raw JSON data
+        byte[] bytesData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(datos_inicio));
+
+        // Attach data to the request
+        UploadHandlerRaw uH = new UploadHandlerRaw(bytesData);
+        uH.contentType = "application/json";
+        request.uploadHandler = uH;
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
         if (request.result == UnityWebRequest.Result.Success)
         {
             string texto = request.downloadHandler.text;
-            if (texto == "No")
+            if (texto == "Access granted")
             {
-                resultado.text = "El alias o la contraseña son incorrectas";
-                print("El alias o la contraseña son incorrectas");
-            }
-            else {
                 print(request.downloadHandler.text);
-                SceneManager.LoadScene("MenuInicio"); }
+                SceneManager.LoadScene("MenuInicio"); 
+            }
             
         }
         else
         {
-            print("Error al descargar");
+            string texto = request.downloadHandler.text;
+            if (texto == "Incorrect password" || texto == "Alias does not exist")
+            {
+                resultado.text = "El alias o la contraseña son incorrectas";
+                print("El alias o la contraseña son incorrectas");
+            }
+            else
+            {
+                print("Error al descargar");
+            }
         }
     }
 }
