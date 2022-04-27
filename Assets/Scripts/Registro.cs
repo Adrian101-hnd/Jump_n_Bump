@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using System.Text;
 
 public class Registro : MonoBehaviour
 {
@@ -58,23 +59,25 @@ public class Registro : MonoBehaviour
         datos_registro.nacionalidad = pais;
         datos_registro.password = contrasenia;
 
-        WWWForm forma = new WWWForm();
-        forma.AddField("datosJSON", JsonUtility.ToJson(datos_registro));
-        UnityWebRequest request = UnityWebRequest.Post(/*CAMBIAR*/"http://localhost/jump-n-bump/registro.php", forma);
-        yield return request.SendWebRequest();
+        // Create the request object
+        UnityWebRequest request = new UnityWebRequest("http://165.232.147.208:4000/api/register",
+            UnityWebRequest.kHttpVerbPOST);
 
+        // Encode the raw JSON data
+        byte[] bytesData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(datos_registro));
+
+        // Attach data to the request
+        UploadHandlerRaw uH = new UploadHandlerRaw(bytesData);
+        uH.contentType = "application/json";
+        request.uploadHandler = uH;
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
         if (request.result == UnityWebRequest.Result.Success)
         {
             string texto = request.downloadHandler.text;
-            if(texto == "SD")
-            {
-                resultado.text = "Datos faltantes";
-            }
-            else if (texto == "No")
-            {
-                resultado.text = "Ese nombre de usuario ya existe";
-            }
-            else
+            
+            if (texto == "OK")
             {
                 print(texto);
                 SceneManager.LoadScene("MenuInicio");
@@ -82,7 +85,20 @@ public class Registro : MonoBehaviour
         }
         else
         {
-            print("Error al descargar");
+            string texto = request.downloadHandler.text;
+
+            if (texto == "UndefinedFieldError")
+            {
+                resultado.text = "Datos faltantes";
+            }
+            else if (texto == "SequelizeUniqueConstraintError")
+            {
+                resultado.text = "Ese nombre de usuario ya existe";
+            }
+            else
+            {
+                resultado.text = "Error de conexion";
+            }
         }
     }
 }
