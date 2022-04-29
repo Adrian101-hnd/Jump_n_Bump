@@ -8,7 +8,7 @@ public class Colisiondefrente : MonoBehaviour
     {
 
         print("choco");
-        SceneManager.LoadScene("Nivel1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 }
