@@ -8,7 +8,7 @@ public class Colisiondefrente : MonoBehaviour
     {
 
         print("choco");
-        SceneManager.LoadScene("Nivel1");
+        Salud_Personaje.instance.SubtractLive();
 
     }
 }

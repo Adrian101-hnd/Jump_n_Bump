@@ -11,11 +11,12 @@ public class Puas : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             print("Tocando espina");
-            //Descontar vid
-            //Salud_Personaje.instance.vidas--;
+            // Descontar vida
+            Salud_Personaje.instance.SubtractLive();
             //HUD.instance.ActualizarVidas();
-            Destroy(collision.gameObject, 0.0001f);
-            SceneManager.LoadScene("Nivel1");
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 
             /*
             if (Salud_Personaje.instance.vidas == 0)

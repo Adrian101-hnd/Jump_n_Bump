@@ -9,8 +9,42 @@ public class Salud_Personaje : MonoBehaviour
     //System.PlayerPrefs.SetString()
     public static Salud_Personaje instance;
 
+    [SerializeField] private GameObject hud;
+
     private void Awake()
     {
         instance = this;
+        vidas = PlayerPrefs.GetInt("lives", 3);
     }
+
+    public void SubtractLive()
+    {
+        print(instance.vidas);
+        
+        instance.vidas--;
+        if (vidas > 0) 
+        {
+            hud.GetComponent<MusicHandler>().SetMusic(instance.vidas);
+            PlayerPrefs.SetInt("lives", instance.vidas);
+        } 
+        else
+        {
+            hud.GetComponent<MusicHandler>().SetMusic(3);
+            PlayerPrefs.SetInt("lives", 3);
+        }
+        Destroy(gameObject, 0.0001f);
+
+        if (instance.vidas > 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOver");
+            instance.vidas = 3;
+        }
+
+        
+    }
+
 }
