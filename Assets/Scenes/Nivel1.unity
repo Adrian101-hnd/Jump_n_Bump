@@ -7316,6 +7316,7 @@ GameObject:
   - component: {fileID: 565165793}
   - component: {fileID: 565165797}
   - component: {fileID: 565165798}
+  - component: {fileID: 565165799}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -7518,6 +7519,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &565165799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565165792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb7c6aaa1da4564996478c36a2a9e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optimalSong: {fileID: 8300000, guid: 33015e14edf748f47867e46114ba789d, type: 3}
+  moderateLossSong: {fileID: 8300000, guid: 57efe780202c29e4e91d4f75e20d5eee, type: 3}
+  severeLossSong: {fileID: 8300000, guid: c98597ec5d5ff214b809d859b868b71f, type: 3}
 --- !u!1 &888781533
 GameObject:
   m_ObjectHideFlags: 0
@@ -57883,6 +57899,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4828530280317614770, guid: a46f93a5b9213df43b6b1592eb7718be, type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 565165792}
+    - target: {fileID: 4828530280317614770, guid: a46f93a5b9213df43b6b1592eb7718be, type: 3}
+      propertyPath: optimalSong
+      value: 
+      objectReference: {fileID: 8300000, guid: 33015e14edf748f47867e46114ba789d, type: 3}
+    - target: {fileID: 4828530280317614770, guid: a46f93a5b9213df43b6b1592eb7718be, type: 3}
+      propertyPath: severeLossSong
+      value: 
+      objectReference: {fileID: 8300000, guid: c98597ec5d5ff214b809d859b868b71f, type: 3}
+    - target: {fileID: 4828530280317614770, guid: a46f93a5b9213df43b6b1592eb7718be, type: 3}
+      propertyPath: moderateLossSong
+      value: 
+      objectReference: {fileID: 8300000, guid: 57efe780202c29e4e91d4f75e20d5eee, type: 3}
     - target: {fileID: 5796936626340938018, guid: a46f93a5b9213df43b6b1592eb7718be, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.76
