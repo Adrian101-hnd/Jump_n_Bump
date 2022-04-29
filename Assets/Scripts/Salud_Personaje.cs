@@ -19,7 +19,6 @@ public class Salud_Personaje : MonoBehaviour
 
     public void SubtractLive()
     {
-        print(instance.vidas);
         
         instance.vidas--;
         if (vidas > 0) 
@@ -30,7 +29,6 @@ public class Salud_Personaje : MonoBehaviour
         else
         {
             hud.GetComponent<MusicHandler>().SetMusic(3);
-            PlayerPrefs.SetInt("lives", 3);
         }
         Destroy(gameObject, 0.0001f);
 

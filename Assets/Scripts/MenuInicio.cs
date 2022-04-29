@@ -9,6 +9,7 @@ public class MenuInicio : MonoBehaviour
     {
         // Cargar la escena nivel 1
         PlayerPrefs.SetInt("lives", 3);
+        PlayerPrefs.SetInt("level", 1);
         SceneManager.LoadScene("Nivel1");
     }
 
@@ -16,6 +17,7 @@ public class MenuInicio : MonoBehaviour
     {
         // Cargar la escena nivel 2
         PlayerPrefs.SetInt("lives", 3);
+        PlayerPrefs.SetInt("level", 2);
         SceneManager.LoadScene("Nivel2");
     }
 
@@ -23,6 +25,7 @@ public class MenuInicio : MonoBehaviour
     {
         // Cargar la escena nivel 3
         PlayerPrefs.SetInt("lives", 3);
+        PlayerPrefs.SetInt("level", 3);
         SceneManager.LoadScene("Nivel3");
     }
 }
