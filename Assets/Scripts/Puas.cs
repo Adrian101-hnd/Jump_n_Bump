@@ -15,6 +15,7 @@ public class Puas : MonoBehaviour
             Salud_Personaje.instance.SubtractLive();
             //HUD.instance.ActualizarVidas();
 
+
         }
     }
 }

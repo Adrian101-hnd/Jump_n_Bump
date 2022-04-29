@@ -10,5 +10,6 @@ public class Colisiondefrente : MonoBehaviour
         print("choco");
         Salud_Personaje.instance.SubtractLive();
 
+
     }
 }
