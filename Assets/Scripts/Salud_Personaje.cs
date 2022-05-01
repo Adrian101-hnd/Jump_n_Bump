@@ -21,6 +21,7 @@ public class Salud_Personaje : MonoBehaviour
     {
         
         instance.vidas--;
+        hud.GetComponent<HUDHandler>().HideLives(instance.vidas);
         if (vidas > 0) 
         {
             hud.GetComponent<MusicHandler>().SetMusic(instance.vidas);
