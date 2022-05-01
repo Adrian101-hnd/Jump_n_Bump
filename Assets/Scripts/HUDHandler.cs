@@ -10,7 +10,15 @@ public class HUDHandler : MonoBehaviour
 
     [SerializeField] private Image progressBar;
 
+    public static HUDHandler instance;
+
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         HideLives(PlayerPrefs.GetInt("lives")); // Init on scene reload
