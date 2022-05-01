@@ -34,41 +34,44 @@ public class Iniciosesion : MonoBehaviour
         datos_inicio.password = contrasenia;
 
         // Create the request object
-        UnityWebRequest request = new UnityWebRequest("http://165.232.147.208:4000/api/login",
-            UnityWebRequest.kHttpVerbPOST);
+        using(UnityWebRequest request = new UnityWebRequest("http://165.232.147.208:4000/api/login",
+            UnityWebRequest.kHttpVerbPOST)){
 
-        // Encode the raw JSON data
-        byte[] bytesData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(datos_inicio));
 
-        // Attach data to the request
-        UploadHandlerRaw uH = new UploadHandlerRaw(bytesData);
-        uH.contentType = "application/json";
-        request.uploadHandler = uH;
-        request.downloadHandler = new DownloadHandlerBuffer();
 
-        yield return request.SendWebRequest();
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            string texto = request.downloadHandler.text;
-            if (texto == "Access granted")
+            // Encode the raw JSON data
+            byte[] bytesData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(datos_inicio));
+
+            // Attach data to the request
+            UploadHandlerRaw uH = new UploadHandlerRaw(bytesData);
+            uH.contentType = "application/json";
+            request.uploadHandler = uH;
+            request.downloadHandler = new DownloadHandlerBuffer();
+
+            yield return request.SendWebRequest();
+            if (request.result == UnityWebRequest.Result.Success)
             {
-                print(request.downloadHandler.text);
-                SceneManager.LoadScene("MenuInicio"); 
-            }
-            
-        }
-        else
-        {
-            string texto = request.downloadHandler.text;
-            if (texto == "Incorrect password" || texto == "Alias does not exist")
-            {
-                resultado.text = "El alias o la contraseña son incorrectas";
-                print("El alias o la contraseña son incorrectas");
+                string texto = request.downloadHandler.text;
+                if (texto == "Access granted")
+                {
+                    print(request.downloadHandler.text);
+                    PlayerPrefs.SetString("alias", user);
+                    SceneManager.LoadScene("MenuInicio");
+                }
+
             }
             else
             {
-                print("Error al descargar");
+                string texto = request.downloadHandler.text;
+                if (texto == "Incorrect password" || texto == "Alias does not exist")
+                {
+                    resultado.text = "El alias o la contraseña son incorrectas";
+                    print("El alias o la contraseña son incorrectas");
+                }
+                else
+                {
+                    print("Error al descargar");
+                }
             }
-        }
-    }
+        } }
 }
