@@ -12,8 +12,6 @@ public class Salud_Personaje : MonoBehaviour
     //System.PlayerPrefs.SetString()
     public static Salud_Personaje instance;
 
-    [SerializeField] private GameObject hud;
-
     private void Awake()
     {
         instance = this;
@@ -24,14 +22,15 @@ public class Salud_Personaje : MonoBehaviour
     {
         
         instance.vidas--;
+        HUDHandler.instance.HideLives(instance.vidas);
         if (instance.vidas > 0) 
         {
-            hud.GetComponent<MusicHandler>().SetMusic(instance.vidas);
+            MusicHandler.SetMusic(instance.vidas);
             PlayerPrefs.SetInt("lives", instance.vidas);
         } 
         else
         {
-            hud.GetComponent<MusicHandler>().SetMusic(3);
+            MusicHandler.SetMusic(3);
         }
         Destroy(gameObject, 0.0001f);
 

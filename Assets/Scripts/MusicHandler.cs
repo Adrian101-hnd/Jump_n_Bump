@@ -34,7 +34,7 @@ public class MusicHandler : MonoBehaviour
     }
 
 
-    public void SetMusic(int lives)
+    public static void SetMusic(int lives)
     {
         if (lives == 3)
         {

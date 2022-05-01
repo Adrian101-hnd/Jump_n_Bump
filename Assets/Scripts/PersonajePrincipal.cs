@@ -19,6 +19,12 @@ public class PersonajePrincipal : MonoBehaviour
     // Factor for which the gravity will be increased when an inversion occurs
     [SerializeField] private float gravityInvertFactor;
     private bool jumping;
+
+    public float GetPositionX()
+    {
+        return gameObject.transform.position.x;
+    }
+
     private void SetGravityScale(float gravityScale)
     {
         _rigidbody.gravityScale = gravityScale;
