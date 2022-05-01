@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using System.Text;
 
 public class Salud_Personaje : MonoBehaviour
 {
@@ -21,7 +24,7 @@ public class Salud_Personaje : MonoBehaviour
     {
         
         instance.vidas--;
-        if (vidas > 0) 
+        if (instance.vidas > 0) 
         {
             hud.GetComponent<MusicHandler>().SetMusic(instance.vidas);
             PlayerPrefs.SetInt("lives", instance.vidas);
@@ -39,10 +42,74 @@ public class Salud_Personaje : MonoBehaviour
         else
         {
             SceneManager.LoadScene("GameOver");
+            Subirintentos();
             instance.vidas = 3;
         }
 
         
+    }
+
+    public struct DatosIntento
+    {
+        public string alias;
+        public int idNivel;
+        public int puntuacion;
+        public int vidas;
+
+    }
+    public static DatosIntento datos_intento;
+
+    public void Subirintentos()
+    {
+        StartCoroutine(Subirintentos2());
+    }
+
+    private IEnumerator Subirintentos2()
+    {
+        string user = PlayerPrefs.GetString("alias");
+        int nivel = PlayerPrefs.GetInt("level");
+        int puntuacion = 10;
+        int vidas = PlayerPrefs.GetInt("lives");
+
+
+        datos_intento.alias = user;
+        datos_intento.idNivel = nivel;
+        datos_intento.puntuacion = puntuacion;
+        datos_intento.vidas = vidas;
+
+        // Create the request object
+        using (UnityWebRequest request = new UnityWebRequest("http://165.232.147.208:4000/api/attempt",
+            UnityWebRequest.kHttpVerbPOST))
+        {
+
+
+
+            // Encode the raw JSON data
+            byte[] bytesData = Encoding.UTF8.GetBytes(JsonUtility.ToJson(datos_intento));
+
+            // Attach data to the request
+            UploadHandlerRaw uH = new UploadHandlerRaw(bytesData);
+            uH.contentType = "application/json";
+            request.uploadHandler = uH;
+            request.downloadHandler = new DownloadHandlerBuffer();
+
+            yield return request.SendWebRequest();
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                string texto = request.downloadHandler.text;
+                if (texto == "OK")
+                {
+                    print(request.downloadHandler.text);
+
+                }
+
+            }
+            else
+            {
+                string texto = request.downloadHandler.text;
+                print(texto);
+            }
+        }
     }
 
 }
