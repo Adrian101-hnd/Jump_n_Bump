@@ -28,4 +28,27 @@ public class MenuInicio : MonoBehaviour
         PlayerPrefs.SetInt("level", 3);
         SceneManager.LoadScene("Nivel3");
     }
+
+    public void PlayTutorial()
+    {
+        // Cargar el tutorial
+        PlayerPrefs.SetInt("lives", 1);
+        PlayerPrefs.SetInt("level", 0);
+        SceneManager.LoadScene("Nivel0");
+    }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Creditos");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MenuInicio");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }

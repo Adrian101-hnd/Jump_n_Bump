@@ -15,6 +15,10 @@ public class MenuPausa : MonoBehaviour
     public static bool estaPausado = false;
 
 
+    private void Awake()
+    {
+        estaPausado = false;
+    }
 
     void Start()
     {
@@ -50,6 +54,7 @@ public class MenuPausa : MonoBehaviour
 
     public void salir()
     {
+        Pausar();
         SceneManager.LoadScene("MenuInicio");
     }
     private void Update()
