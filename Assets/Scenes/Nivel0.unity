@@ -251,6 +251,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4597162395997042584, guid: c73ee57a2b9670a4d9901afc104efa45, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bef0790a580843845897dab6c88fd7d0, type: 3}
+    - target: {fileID: 4597162395997042585, guid: c73ee57a2b9670a4d9901afc104efa45, type: 3}
+      propertyPath: optimalSong
+      value: 
+      objectReference: {fileID: 8300000, guid: bef0790a580843845897dab6c88fd7d0, type: 3}
+    - target: {fileID: 4597162395997042585, guid: c73ee57a2b9670a4d9901afc104efa45, type: 3}
+      propertyPath: severeLossSong
+      value: 
+      objectReference: {fileID: 8300000, guid: bef0790a580843845897dab6c88fd7d0, type: 3}
+    - target: {fileID: 4597162395997042585, guid: c73ee57a2b9670a4d9901afc104efa45, type: 3}
+      propertyPath: moderateLossSong
+      value: 
+      objectReference: {fileID: 8300000, guid: bef0790a580843845897dab6c88fd7d0, type: 3}
     - target: {fileID: 4597162395997042586, guid: c73ee57a2b9670a4d9901afc104efa45, type: 3}
       propertyPath: m_Pivot.x
       value: 0

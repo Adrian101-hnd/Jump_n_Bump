@@ -36,4 +36,19 @@ public class MenuInicio : MonoBehaviour
         PlayerPrefs.SetInt("level", 0);
         SceneManager.LoadScene("Nivel0");
     }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Creditos");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MenuInicio");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
