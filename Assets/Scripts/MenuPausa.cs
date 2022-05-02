@@ -12,7 +12,7 @@ public class MenuPausa : MonoBehaviour
 
     public GameObject menuPausa;
 
-    public bool estaPausado = false;
+    public static bool estaPausado = false;
 
 
 
@@ -22,14 +22,17 @@ public class MenuPausa : MonoBehaviour
     }
         public void Pausar()
     {
+        /*
         if (estaPausado == true)
         {
+            
             float pauseEndTime = Time.realtimeSinceStartup + 3;
             while (Time.realtimeSinceStartup < pauseEndTime)
             {
 
             }
         }
+        */
         if (estaPausado)
         {
             audioSource.Play(0);
@@ -43,6 +46,11 @@ public class MenuPausa : MonoBehaviour
             menuPausa.SetActive(estaPausado);
             Time.timeScale = estaPausado ? 0 : 1;
         
+    }
+
+    public void salir()
+    {
+        SceneManager.LoadScene("MenuInicio");
     }
     private void Update()
     {
