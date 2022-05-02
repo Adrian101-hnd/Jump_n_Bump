@@ -66,21 +66,24 @@ public class PersonajePrincipal : MonoBehaviour
                                             _rigidbody.velocity.y + jumpFactor * velocidadY);
 
         // Inversion of gravity (positive)
-        if (Input.GetButtonDown("Fire1") && _spriteRenderer.flipX == true)
+        if (!MenuPausa.estaPausado)
         {
-            SetGravityScale(gravityInvertFactor);
-            gameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-            _spriteRenderer.flipX = false;
-           
-        }
+            if (Input.GetButtonDown("Fire1") && _spriteRenderer.flipX == true)
+            {
+                SetGravityScale(gravityInvertFactor);
+                gameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                _spriteRenderer.flipX = false;
 
-        // Inversion of gravity (negative)
-        if (Input.GetButtonDown("Fire2") && _spriteRenderer.flipX == false)
-        {
-            SetGravityScale(-gravityInvertFactor);
-            gameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
-            _spriteRenderer.flipX = true;
-            
+            }
+
+            // Inversion of gravity (negative)
+            if (Input.GetButtonDown("Fire2") && _spriteRenderer.flipX == false)
+            {
+                SetGravityScale(-gravityInvertFactor);
+                gameObject.transform.eulerAngles = new Vector3(0.0f, 0.0f, 180.0f);
+                _spriteRenderer.flipX = true;
+
+            }
         }
     }
 
