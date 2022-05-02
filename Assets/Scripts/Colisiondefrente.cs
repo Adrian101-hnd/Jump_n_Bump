@@ -15,6 +15,7 @@ public class Colisiondefrente : MonoBehaviour
         {
             print("toco la moneda");
             //efectomoneda.Play();
+            Destroy(collision.gameObject);
         }
         else
         {
