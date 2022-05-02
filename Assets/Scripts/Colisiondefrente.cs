@@ -4,12 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Colisiondefrente : MonoBehaviour
 {
+    /*
+    [SerializeField]
+    private AudioSource efectomoneda;
+    */
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        print("choco");
-        Salud_Personaje.instance.SubtractLive();
-
-
+        
+        if (collision.gameObject.CompareTag("Coleccionable"))
+        {
+            print("toco la moneda");
+            //efectomoneda.Play();
+        }
+        else
+        {
+            print("choco");
+            Salud_Personaje.instance.SubtractLive();
+        }
     }
 }
