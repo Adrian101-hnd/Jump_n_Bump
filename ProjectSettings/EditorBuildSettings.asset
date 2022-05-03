@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Inicioregistro.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/VictoryScreen.unity
+    guid: 5b65bf6255eb5e3479fbc2f3d90cf75c
+  - enabled: 1
     path: Assets/Scenes/Nivel1.unity
     guid: e9cce7062b8294f46a5240a16087ebb6
   - enabled: 1
