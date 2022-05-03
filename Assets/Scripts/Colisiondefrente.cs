@@ -17,6 +17,10 @@ public class Colisiondefrente : MonoBehaviour
             //efectomoneda.Play();
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.CompareTag("Ganar"))
+        {
+            SceneManager.LoadScene("VictoryScreen");
+        }
         else
         {
             print("choco");
