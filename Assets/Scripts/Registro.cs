@@ -60,7 +60,7 @@ public class Registro : MonoBehaviour
         datos_registro.password = contrasenia;
 
         // Create the request object
-        using (UnityWebRequest request = new UnityWebRequest("http://165.232.147.208:4000/api/register",
+        using (UnityWebRequest request = new UnityWebRequest("http://165.232.147.208/api/register",
             UnityWebRequest.kHttpVerbPOST))
         {
 
@@ -88,7 +88,7 @@ public class Registro : MonoBehaviour
             else
             {
                 string texto = request.downloadHandler.text;
-
+                print(texto);
                 if (texto == "UndefinedFieldError")
                 {
                     resultado.text = "Datos faltantes";

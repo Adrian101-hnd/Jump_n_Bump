@@ -34,6 +34,8 @@ public class Salud_Personaje : MonoBehaviour
         }
         Destroy(gameObject, 0.0001f);
 
+        Subirintentos();
+
         if (instance.vidas > 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -41,7 +43,7 @@ public class Salud_Personaje : MonoBehaviour
         else
         {
             SceneManager.LoadScene("GameOver");
-            Subirintentos();
+            
             instance.vidas = 3;
         }
 
@@ -67,7 +69,9 @@ public class Salud_Personaje : MonoBehaviour
     {
         string user = PlayerPrefs.GetString("alias");
         int nivel = PlayerPrefs.GetInt("level");
-        int puntuacion = 10;
+        int puntuacion = (int)LevelManager.instance.GetProgressPercentage();
+        print("puntuacion");
+        print(puntuacion);
         int vidas = PlayerPrefs.GetInt("lives");
 
 
@@ -77,7 +81,7 @@ public class Salud_Personaje : MonoBehaviour
         datos_intento.vidas = vidas;
 
         // Create the request object
-        using (UnityWebRequest request = new UnityWebRequest("http://165.232.147.208:4000/api/attempt",
+        using (UnityWebRequest request = new UnityWebRequest("http://165.232.147.208/api/attempt",
             UnityWebRequest.kHttpVerbPOST))
         {
 
