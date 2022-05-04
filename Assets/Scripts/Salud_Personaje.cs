@@ -20,8 +20,9 @@ public class Salud_Personaje : MonoBehaviour
 
     public void SubtractLive()
     {
-        
+        print("Subtract live called");
         instance.vidas--;
+        print(instance.vidas);
         HUDHandler.instance.HideLives(instance.vidas);
         if (instance.vidas > 0) 
         {

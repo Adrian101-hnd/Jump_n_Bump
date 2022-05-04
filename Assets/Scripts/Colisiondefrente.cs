@@ -21,6 +21,10 @@ public class Colisiondefrente : MonoBehaviour
         {
             SceneManager.LoadScene("VictoryScreen");
         }
+        else if (collision.gameObject.CompareTag("Puas"))
+        {
+
+        }
         else
         {
             print("choco");
