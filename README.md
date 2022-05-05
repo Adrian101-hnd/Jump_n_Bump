@@ -70,3 +70,7 @@ The web server supports a database from SQL Server. It can be hosted locally, or
 Once in SQL Server, just run the query from the file `jump-n-bump-database.sql`. The structure of the database will be created. Then, manually add the information of the music and the levels from the game in the corresponding tables.
 
 Finally, change the file `db.config.js` in the `jump-n-bump-backend/config` directory to allow the server to access your database server.
+
+## Data visualization
+
+In order to generate data visualizations, you must have an active license of Tableau, and Tableau Desktop installed in your computer. Select connect to SQL Server and enter your access credentials. Then you can generate the views.
