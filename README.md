@@ -7,7 +7,7 @@ The videogame has the intention to communicate how important is to protect the p
 
 Using an equalizing algorithm, the videogame simulates how a person with hearing loss perceives the music for each level.
 
-# Technical requirements
+# Setting up the project
 
 For each of the following points, you can choose to use the already deployed version or deploy your own.
 
@@ -15,7 +15,7 @@ First clone the whole repository to your computer and/or server.
 
 ## Videogame
 
-Your computer must be running Windows 10 OS or earlier.
+Your computer must be running Windows 10 OS or earlier. As minimum requirements, your computer must have 2.0+ GHz Processor, 8 GB RAM, OpenGL Graphics and 1 GB of disk space.
 
 ### Use of compiled version
 Open the file `Jump_n_Bump.exe` inside the `jump-n-bump-backend` folder.
@@ -52,4 +52,21 @@ Then run the project as a process.
 
 `pm2 start index.js`
 
+In order to allow the videogame to connect with your server, change the URL in the following files from the `Assets/Scripts` folder:
+- `Iniciosesion.cs`
+- `Registro.cs`
+- `Salud_Personaje.cs`
+
+Then re-compile the project in Unity as described above.
+
 ## Database
+
+### Deployed version
+The web server uses this deployment. No further action is required.
+
+### Deploying the database
+The web server supports a database from SQL Server. It can be hosted locally, or in the cloud with Amazon Web Services or Azure SQL.
+
+Once in SQL Server, just run the query from the file `jump-n-bump-database.sql`. The structure of the database will be created. Then, manually add the information of the music and the levels from the game in the corresponding tables.
+
+Finally, change the file `db.config.js` in the `jump-n-bump-backend/config` directory to allow the server to access your database server.
