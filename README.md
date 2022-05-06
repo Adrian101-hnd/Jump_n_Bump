@@ -74,3 +74,10 @@ Finally, change the file `db.config.js` in the `jump-n-bump-backend/config` dire
 ## Data visualization
 
 In order to generate data visualizations, you must have an active license of Tableau, and Tableau Desktop installed in your computer. Select connect to SQL Server and enter your access credentials. Then you can generate the views.
+
+# How to play
+Log in with your account or create it if you don't have one. The main menu has buttons to play the tutorial, and each one of the levels. You can also see the credits by pressing "Credits".
+
+When losing an attempt or finishing a level, you will be prompted a screen with options to repeat the level or go to the main menu. Choose whichever you like.
+
+Finally, you can close the app by selecting "Exit" in the main menu.
